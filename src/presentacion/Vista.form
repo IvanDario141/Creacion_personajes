@@ -6,6 +6,21 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner1">
     </Component>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -32,20 +47,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="numeroPersonajes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="orcoRdioBtn" min="-2" max="-2" attributes="0"/>
-                          <Component id="humanoRadioBtn" min="-2" max="-2" attributes="0"/>
-                          <Component id="elfoRadioBtn" min="-2" max="-2" attributes="0"/>
-                          <Component id="crearBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="53" pref="310" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="crearBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="numeroPersonajes" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="orcoRadioBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="humanoRadioBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="elfoRadioBtn" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="personajesContainer" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,7 +64,7 @@
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="humanoRadioBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="orcoRdioBtn" min="-2" max="-2" attributes="0"/>
+              <Component id="orcoRadioBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="elfoRadioBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -64,6 +73,7 @@
               <Component id="crearBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="133" max="32767" attributes="0"/>
           </Group>
+          <Component id="personajesContainer" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -73,7 +83,7 @@
         <Property name="text" type="java.lang.String" value="Humano"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="orcoRdioBtn">
+    <Component class="javax.swing.JRadioButton" name="orcoRadioBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Orco"/>
       </Properties>
@@ -95,5 +105,27 @@
         </Property>
       </Properties>
     </Component>
+    <Container class="javax.swing.JPanel" name="personajesContainer">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="288" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </SubComponents>
 </Form>

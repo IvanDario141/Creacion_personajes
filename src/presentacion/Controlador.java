@@ -20,17 +20,19 @@ public class Controlador implements ActionListener{
         Personaje[] personajes = null;
         if(vista.getHumanoRadioBtn().isSelected()){
             personaje = "Humano";
-        }else if(vista.getOrcoRdioBtn().isSelected()){
+        }else if(vista.getOrcoRadioBtn().isSelected()){
             personaje = "Orco";
         }else if(vista.getElfoRadioBtn().isSelected()){
             personaje = "Elfo";
         }
         
-        personajes = modelo.crearPersonaje(personaje, (int) vista.getNumeroPersonajes().getValue());
+        modelo.crearPersonaje(personaje, (int) vista.getNumeroPersonajes().getValue());
+        
+        /*personajes = modelo.crearPersonaje(personaje, (int) vista.getNumeroPersonajes().getValue());
         
         for(int i=0; i<personajes.length; i++){
             System.out.println(personajes[i].Saludar()+", numero "+i);
-        }
+        }*/
         //System.out.println(vista.getNumeroPersonajes().getValue() + " "+ personaje +"s");
         
     }
