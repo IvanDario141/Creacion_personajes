@@ -5,11 +5,13 @@
  */
 package presentacion;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.ScrollPane;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -20,6 +22,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import logica.prototipos.Personaje;
 
 /**
@@ -38,7 +42,7 @@ public class Vista extends javax.swing.JFrame {
         buttonGroup1.add(orcoRadioBtn);
         buttonGroup1.add(elfoRadioBtn);
         //getPersonajesContainer().setPreferredSize(new Dimension(500, 300));
-        getPersonajesContainer().setLayout(new GridLayout(2,5));
+        getPersonajesContainer().setLayout(new GridLayout(0,3));
         //JScrollPane scrollPane = new JScrollPane();
         //getPersonajesContainer().add(scrollPane);
         capturarEventos();
@@ -187,35 +191,54 @@ public class Vista extends javax.swing.JFrame {
     
     private JPanel iconPersonaje(String rol){
         
+        Border blackline = BorderFactory.createLineBorder(Color.black);
+        
         JPanel personajePanel = new JPanel();
-        personajePanel.setLayout(new GridLayout(1, 2));
-        personajePanel.setSize(new Dimension(120,120));
+        //personajePanel.setLayout(new GridLayout(1, 1));
+        personajePanel.setBorder(blackline);
+        
+        JPanel imagenes = new JPanel();
+        imagenes.setLayout(new GridLayout(1, 2));
+        JPanel info = new JPanel();
+        info.setSize(20, 20);
         
         String personaje=null;
+        String transporte=null;
         if(rol.equals("Humano")){
             personaje="humanoPng.png";
+            transporte="caballoPng.jpg";
         }else if(rol.equals("Orco")){
             personaje="orcoPng.png";
+            transporte="jabaliPng.png";
         }else if(rol.equals("Elfo")){
             personaje="elfoPng.jpg";
+            transporte="caballoPng.jpg";
         }
         ImageIcon imagePersonaje = new ImageIcon("src\\presentacion\\images\\"+personaje);
-        JLabel labelPersonaje = new JLabel(new ImageIcon(imagePersonaje.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+        ImageIcon imageTransporte = new ImageIcon("src\\presentacion\\images\\"+transporte);
+        JLabel labelPersonaje = new JLabel(new ImageIcon(imagePersonaje.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH)));
+        JLabel labelTransportePersonaje = new JLabel(new ImageIcon(imageTransporte.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH)));
         
-        personajePanel.add(labelPersonaje);
-        personajePanel.add(new JLabel(rol), JLabel.CENTER);
+        imagenes.add(labelPersonaje);
+        imagenes.add(labelTransportePersonaje);
         
+        info.add(new JLabel(rol), JLabel.CENTER);
+        
+        personajePanel.add(imagenes);
+        //personajePanel.add(info);
         
         return personajePanel;
     }
     
+    public void notificarError(){
+        getPersonajesContainer().removeAll();
+        getPersonajesContainer().add(new JLabel("Ocurrio un error con alguno de los campos"), JLabel.CENTER);
+    }
+    
     public void agregarPersonajes(Personaje[] personajes){
-                getPersonajesContainer().setLayout(new GridLayout(2,5));
-
         getPersonajesContainer().removeAll();
         for(int i=0; i<personajes.length; i++){
             getPersonajesContainer().add(iconPersonaje(personajes[i].getRol()));
-            //getPersonajesContainer().add(new JLabel(personajes[i].Saludar(), JLabel.CENTER));
         }
     }
 }
