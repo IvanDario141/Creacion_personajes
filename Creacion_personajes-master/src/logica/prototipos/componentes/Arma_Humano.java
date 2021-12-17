@@ -4,6 +4,8 @@ public class Arma_Humano implements Arma{
     
     @Override
     public String ejecucion() {
-        return "Espada de acero";
+        String a = "Espada de acero";
+        
+        return a;
     }
 }

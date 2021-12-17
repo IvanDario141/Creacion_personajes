@@ -1,11 +1,13 @@
 package logica.prototipos;
 
 public class Humano extends Personaje{
-    
-    private String armaduras = "Armadura de pecho";
-    private String armas = "Espada de acero";
-    private String trans = "Caballo";
 
+    private String armaduras = "Armadura de pecho   ";
+    private String armas = "Espada de acero   ";
+    private String trans = "Caballo   ";
+    private String url = "src\\presentacion\\images\\humanoPng.png";
+   
+    
     public String getArmaduras() {
         return armaduras;
     }
@@ -18,8 +20,8 @@ public class Humano extends Personaje{
         return armas;
     }
 
-    public void setArmas(String armas) {
-        this.armaduras = armaduras;
+    public void setArmas(String arma) {
+        this.armas = arma;
     }
     
     public String getTrans() {
@@ -28,5 +30,13 @@ public class Humano extends Personaje{
 
     public void setTrans(String trans) {
         this.trans = trans;
+    }
+    
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

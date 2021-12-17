@@ -4,7 +4,7 @@ public class Armadura_Humano implements Armadura{
     
     @Override
     public String ejecucion() {
-        return "Armadura de Protección";
+        return "Armadura de pecho";
     }
 
        

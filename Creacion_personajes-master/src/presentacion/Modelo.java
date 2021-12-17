@@ -26,18 +26,16 @@ public class Modelo {
         for(int i=0; i<numero; i++){
             personajes[i] = personajeCreador.obtenerPersonaje(personaje);
         }   
-        
         b = personajeCreador.arreglo(personaje);
-        System.out.println("Armadura: "+b[0]);
-        System.out.println("Arma: "+b[1]);
-        System.out.println("Transporte: "+b[2]);
-        getVista().setSize(300, 400);
-        getVista().setSize(300+(100*numero),400);
+      
+        getVista().descripcion(b);
+        getVista().setSize(500, 400);
+        getVista().setSize(500+(100*numero),400);
         getVista().agregarPersonajes(personajes);
     }
     
     public void iniciar(){
-        getVista().setSize(300, 400);
+        getVista().setSize(500, 400);
         getVista().setResizable(false);
         getVista().setVisible(true);
         getVista().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

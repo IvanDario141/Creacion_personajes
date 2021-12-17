@@ -4,5 +4,4 @@ public interface Armadura {
     
     public String ejecucion();   
     
-   
 }

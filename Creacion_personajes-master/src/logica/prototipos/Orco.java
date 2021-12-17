@@ -1,10 +1,11 @@
 package logica.prototipos;
 
 public class Orco extends Personaje{
-    private String armaduras = "Yelmo orco";
-    private String armas = "Espada Uruk hai";
-    private String trans = "Hiena";
-
+    private String armaduras = "  Yelmo orco  ";
+    private String armas = "  Hacha   ";
+    private String trans = "  Huargos  ";
+    private String url = "src\\presentacion\\images\\orcoPng.png";
+    
     public String getArmaduras() {
         return armaduras;
     }
@@ -28,4 +29,13 @@ public class Orco extends Personaje{
     public void setTrans(String trans) {
         this.trans = trans;
     }
+    
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
 }

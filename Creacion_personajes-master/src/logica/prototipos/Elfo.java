@@ -1,10 +1,11 @@
 package logica.prototipos;
 
 public class Elfo extends Personaje{
-    private String armaduras = "Armadura de Protección";
-    private String armas = "Espada de acero punzante";
-    private String trans = "Aparicion";
-
+    private String armaduras = "  Armadura de Protección  ";
+    private String armas = "  Arco   ";
+    private String trans = "  Aparicion   ";
+    private String url = "src\\presentacion\\images\\elfoPng.jpg";
+    
     public String getArmaduras() {
         return armaduras;
     }
@@ -27,5 +28,13 @@ public class Elfo extends Personaje{
 
     public void setTrans(String trans) {
         this.trans = trans;
+    }
+    
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

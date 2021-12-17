@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
+import logica.fabricas.PersonajeCreador;
 import logica.prototipos.Personaje;
 
 /**
@@ -25,6 +26,7 @@ public class Vista extends javax.swing.JFrame {
 
     private Modelo modelo;
     private Controlador controlador;
+    String descripcion[] = new String[3];
     
     public Vista(Modelo m) {
         modelo = m;
@@ -74,6 +76,10 @@ public class Vista extends javax.swing.JFrame {
     public JPanel getPersonajesContainer(){
         return personajesContainer;
     }
+    
+    public String[] getDescripcion(){
+        return descripcion;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,7 +94,7 @@ public class Vista extends javax.swing.JFrame {
         crearBtn = new javax.swing.JButton();
         numeroPersonajes = new javax.swing.JSpinner();
         personajesContainer = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,19 +137,6 @@ public class Vista extends javax.swing.JFrame {
             .addGap(0, 252, Short.MAX_VALUE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 0));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,26 +152,28 @@ public class Vista extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(personajesContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(humanoRadioBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(humanoRadioBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(orcoRadioBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(elfoRadioBtn)
+                        .addGap(8, 8, 8)
+                        .addComponent(numeroPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(crearBtn))
+                    .addComponent(personajesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(orcoRadioBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(elfoRadioBtn)
-                .addGap(8, 8, 8)
-                .addComponent(numeroPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(crearBtn)
-                .addContainerGap(263, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(personajesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -195,8 +190,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton crearBtn;
     private javax.swing.JRadioButton elfoRadioBtn;
     private javax.swing.JRadioButton humanoRadioBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner numeroPersonajes;
     private javax.swing.JRadioButton orcoRadioBtn;
@@ -212,37 +207,38 @@ public class Vista extends javax.swing.JFrame {
         JPanel personajePanel = new JPanel();
         personajePanel.setLayout(new GridLayout(1,0));
         
-        String personaje=null;
-        if(rol.equals("Humano")){
-            personaje="humanoPng.png";
-        }else if(rol.equals("Orco")){
-            personaje="orcoPng.png";
-        }else if(rol.equals("Elfo")){
-            personaje="elfoPng.jpg";
-        }
-        ImageIcon imagePersonaje = new ImageIcon("src\\presentacion\\images\\"+personaje);
+        PersonajeCreador pc = new PersonajeCreador();
+        String[] array = pc.arreglo(rol);
+        String url = array[3];
+        
+        ImageIcon imagePersonaje = new ImageIcon(url);
         JLabel labelPersonaje = new JLabel(new ImageIcon(imagePersonaje.getImage().getScaledInstance(80, 90, SwingConstants.NORTH)));
         personajePanel.add(labelPersonaje);
-        //JLabel lbl2 = new JLabel(rol);
         JLabel lb12 = new JLabel(rol, SwingConstants.LEFT);
-        //lb12.setVerticalAlignment(SwingConstants.CENTER);
         Font font = new Font("SansSerif", Font.BOLD, 20);
         lb12.setFont(font);
         personajePanel.add(lb12);
          
-        
-        
         return personajePanel;
     }
     
     public void agregarPersonajes(Personaje[] personajes){
-                getPersonajesContainer().setLayout(new GridLayout(2,5));
+        getPersonajesContainer().setLayout(new GridLayout(2,5));
 
         getPersonajesContainer().removeAll();
         for(int i=0; i<personajes.length; i++){
             getPersonajesContainer().add(iconPersonaje(personajes[i].getRol()));
             this.setVisible(true);
-            //getPersonajesContainer().add(new JLabel(personajes[i].Saludar(), JLabel.CENTER));
+            
         }
     }
+    
+    public void descripcion(String [] a){
+        String c[] = new String[3];
+        c = a;
+        jLabel1.setText("Armadura: "+c[0] + "   Arma: "+c[1] + "    Transporte: "+c[2]);
+        
+    }
+    
+    
 }

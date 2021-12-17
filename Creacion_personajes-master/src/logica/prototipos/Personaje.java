@@ -52,17 +52,12 @@ public class Personaje implements Cloneable{
             personajeClonado.setArma(arma);            
             personajeClonado.setArmadura(armadura);
             personajeClonado.setTransporte(transporte);
-                       
+                                   
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         } 
         return personajeClonado;
     }
     
-    
-
-    public String Saludar() {
-       return "kiassiakj ";
-    }
-    
+  
 }
